@@ -10,27 +10,25 @@
     
 
     
+        
     <url>
      <loc>/twitter/</loc>
      <lastmod>2017-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>/stripe/</loc>
      <lastmod>2017-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
-    
-
-    
+        
     <url>
      <loc>/progress_ring/</loc>
      <lastmod>2017-12-17</lastmod>
      <changefreq>daily</changefreq>
     </url>
+        
     
 
 </urlset>

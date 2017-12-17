@@ -2,18 +2,23 @@
     "docs": [
         {
             "location": "/", 
-            "text": "Corona Plugin \n Modules by Jason Schroeder\n\n\nDocumentation for usage of Corona resources by \n@schroederapps\n\n\nPlugins\n\n\n\n\nTwitter\n\n\nStripe\n\n\nProgress Ring\n\n\n\n\nLua Modules", 
+            "text": "SchroederDocs\n\n\nDocumenting \nJason Schroeder\n's shared code since 2017.\n\n\nAbout Jason\n\n\n\n\nWeb: \nschroederapps.com\n\n\nGitHub: \ngithub.com/schroederapps\n\n\nTwitter: \ntwitter.com/schroederapps\n\n\n\n\nCorona Plugins\n\n\n\n\nTwitter\n\n\nStripe\n\n\nProgress Ring\n\n\n\n\nLua Modules", 
             "title": "Home"
         }, 
         {
-            "location": "/#corona-plugin-modules-by-jason-schroeder", 
-            "text": "Documentation for usage of Corona resources by  @schroederapps", 
-            "title": "Corona Plugin &amp; Modules by Jason Schroeder"
+            "location": "/#schroederdocs", 
+            "text": "Documenting  Jason Schroeder 's shared code since 2017.", 
+            "title": "SchroederDocs"
         }, 
         {
-            "location": "/#plugins", 
+            "location": "/#about-jason", 
+            "text": "Web:  schroederapps.com  GitHub:  github.com/schroederapps  Twitter:  twitter.com/schroederapps", 
+            "title": "About Jason"
+        }, 
+        {
+            "location": "/#corona-plugins", 
             "text": "Twitter  Stripe  Progress Ring", 
-            "title": "Plugins"
+            "title": "Corona Plugins"
         }, 
         {
             "location": "/#lua-modules", 
@@ -52,7 +57,7 @@
         }, 
         {
             "location": "/progress_ring/", 
-            "text": "Progress Ring Plugin for Corona\n\n\nsection header\n\n\nStandard paragraph\n\n\n\n\nblockquote\n\n\n\n\nitalics\n\n\nbold\n\n\ninline code\n\n\ndouble-indent for code block.\n\n\n\nlinked text", 
+            "text": "Progress Ring Plugin for Corona\n\n\nsection header\n\n\nStandard paragraph\n\n\n\n\nblockquote\n\n\n\n\nitalics\n\n\nbold\n\n\ninline code\n\n\ntriple-backtick for code block.\n\n\n\n\nlinked text", 
             "title": "Progress Ring"
         }, 
         {
@@ -62,7 +67,7 @@
         }, 
         {
             "location": "/progress_ring/#section-header", 
-            "text": "Standard paragraph   blockquote   italics  bold  inline code  double-indent for code block.  linked text", 
+            "text": "Standard paragraph   blockquote   italics  bold  inline code  triple-backtick for code block.  linked text", 
             "title": "section header"
         }
     ]
