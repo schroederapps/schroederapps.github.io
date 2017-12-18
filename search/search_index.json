@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "SchroederDocs\n\n\nDocumenting \nJason Schroeder\n's shared code since 2017.\n\n\nAbout Jason\n\n\n\n\nWeb: \nschroederapps.com\n\n\nGitHub: \ngithub.com/schroederapps\n\n\nTwitter: \ntwitter.com/schroederapps\n\n\n\n\nCorona Plugins\n\n\n\n\nTwitter\n\n\nStripe\n\n\nProgress Ring\n\n\n\n\nLua Modules", 
+            "text": "SchroederDocs\n\n\nDocumenting \nJason Schroeder\n's shared code since 2017.\n\n\nAbout Jason\n\n\n\n\nWeb: \nschroederapps.com\n\n\nGitHub: \ngithub.com/schroederapps\n\n\nTwitter: \ntwitter.com/schroederapps\n\n\n\n\nCorona Plugins\n\n\n\n\nProgress Ring\n\n\nStripe\n\n\nTwitter\n\n\n\n\nOpen-Source Corona Libraries\n\n\n\n\ncorona-settings\n: a simple solution for securely saving persistent user settings in Corona projects\n\n\ncorona-timer2\n: extend the capabilities of Corona's built-in \ntimer\n library with one line of code", 
             "title": "Home"
         }, 
         {
@@ -17,17 +17,17 @@
         }, 
         {
             "location": "/#corona-plugins", 
-            "text": "Twitter  Stripe  Progress Ring", 
+            "text": "Progress Ring  Stripe  Twitter", 
             "title": "Corona Plugins"
         }, 
         {
-            "location": "/#lua-modules", 
-            "text": "", 
-            "title": "Lua Modules"
+            "location": "/#open-source-corona-libraries", 
+            "text": "corona-settings : a simple solution for securely saving persistent user settings in Corona projects  corona-timer2 : extend the capabilities of Corona's built-in  timer  library with one line of code", 
+            "title": "Open-Source Corona Libraries"
         }, 
         {
             "location": "/twitter/", 
-            "text": "Twitter Plugin for Corona\n\n\nsection header\n\n\nStandard paragraph\n\n\n\n\nblockquote\n\n\n\n\nitalics\n\n\nbold\n\n\ninline code\n\n\ndouble-indent for code block.\n\n\n\nlinked text", 
+            "text": "Twitter Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
             "title": "Twitter"
         }, 
         {
@@ -36,13 +36,13 @@
             "title": "Twitter Plugin for Corona"
         }, 
         {
-            "location": "/twitter/#section-header", 
-            "text": "Standard paragraph   blockquote   italics  bold  inline code  double-indent for code block.  linked text", 
-            "title": "section header"
+            "location": "/twitter/#documentation-coming-soon", 
+            "text": "For now, please visit the older docs at  schroederapps.com", 
+            "title": "Documentation coming soon!"
         }, 
         {
             "location": "/stripe/", 
-            "text": "Stripe Plugin for Corona\n\n\nsection header\n\n\nStandard paragraph\n\n\n\n\nblockquote\n\n\n\n\nitalics\n\n\nbold\n\n\ninline code\n\n\ndouble-indent for code block.\n\n\n\nlinked text", 
+            "text": "Stripe Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
             "title": "Stripe"
         }, 
         {
@@ -51,13 +51,13 @@
             "title": "Stripe Plugin for Corona"
         }, 
         {
-            "location": "/stripe/#section-header", 
-            "text": "Standard paragraph   blockquote   italics  bold  inline code  double-indent for code block.  linked text", 
-            "title": "section header"
+            "location": "/stripe/#documentation-coming-soon", 
+            "text": "For now, please visit the older docs at  schroederapps.com", 
+            "title": "Documentation coming soon!"
         }, 
         {
             "location": "/progress_ring/", 
-            "text": "Progress Ring Plugin for Corona\n\n\nsection header\n\n\nStandard paragraph\n\n\n\n\nblockquote\n\n\n\n\nitalics\n\n\nbold\n\n\ninline code\n\n\ntriple-backtick for code block.\n\n\n\n\nlinked text", 
+            "text": "Progress Ring Plugin for Corona\n\n\n\n\nAbout the Plugin\n\n\nThe Progress Ring Plugin for Corona allows developers to add customizable circular \"progress rings\" to their Corona apps and games in as little as a single line of code. These rings can rotate to indicate a timer countdown, or player/enemy health bars, or even used in chart \n graph demonstrations in a business app. It was designed to be lightweight and flexible, with good performance even on older mobile devices.\n\n\n\n\nAdding the Plugin to your App\n\n\n\n\nActivate the plugin at the Corona Marketplace\n\n\nAdd an entry into the \nplugins\n table of your project's \nbuild.settings\n file. Below is an example of a minimal build.settings file with the required entry for the progressRing plugin:\n\n\n\n\nsettings = {}\n\nsettings.plugins = {\n  ['plugin.progressRing'] = {publisherId = 'com.schroederapps'},\n}\n\n\n\n\n\n\nCreating a Progress Ring\n\n\nTo create a \nprogressRing\n object, first \nrequire\n the plugin into your app/scene:\n\n\nlocal progressRing = require('plugin.progressRing')\n\n\n\n\nNext, call \nprogressRing.new()\n, which will return a progress ring object with the default parameters:\n\n\nlocal myRing = progressRing.new()\n\n\n\n\nNOTE:\n Progress rings are, at their core, just Corona \nGroupObjects\n. They can be moved, repositioned, inserted into other group objects, and destroyed just like any other group object. If there's something you can do to a Corona group object, then you can do that to your progress ring.", 
             "title": "Progress Ring"
         }, 
         {
@@ -66,9 +66,19 @@
             "title": "Progress Ring Plugin for Corona"
         }, 
         {
-            "location": "/progress_ring/#section-header", 
-            "text": "Standard paragraph   blockquote   italics  bold  inline code  triple-backtick for code block.  linked text", 
-            "title": "section header"
+            "location": "/progress_ring/#about-the-plugin", 
+            "text": "The Progress Ring Plugin for Corona allows developers to add customizable circular \"progress rings\" to their Corona apps and games in as little as a single line of code. These rings can rotate to indicate a timer countdown, or player/enemy health bars, or even used in chart   graph demonstrations in a business app. It was designed to be lightweight and flexible, with good performance even on older mobile devices.", 
+            "title": "About the Plugin"
+        }, 
+        {
+            "location": "/progress_ring/#adding-the-plugin-to-your-app", 
+            "text": "Activate the plugin at the Corona Marketplace  Add an entry into the  plugins  table of your project's  build.settings  file. Below is an example of a minimal build.settings file with the required entry for the progressRing plugin:   settings = {}\n\nsettings.plugins = {\n  ['plugin.progressRing'] = {publisherId = 'com.schroederapps'},\n}", 
+            "title": "Adding the Plugin to your App"
+        }, 
+        {
+            "location": "/progress_ring/#creating-a-progress-ring", 
+            "text": "To create a  progressRing  object, first  require  the plugin into your app/scene:  local progressRing = require('plugin.progressRing')  Next, call  progressRing.new() , which will return a progress ring object with the default parameters:  local myRing = progressRing.new()  NOTE:  Progress rings are, at their core, just Corona  GroupObjects . They can be moved, repositioned, inserted into other group objects, and destroyed just like any other group object. If there's something you can do to a Corona group object, then you can do that to your progress ring.", 
+            "title": "Creating a Progress Ring"
         }
     ]
 }
