@@ -2,18 +2,13 @@
     "docs": [
         {
             "location": "/", 
-            "text": "SchroederDocs\n\n\nDocumenting \nJason Schroeder\n's shared code since 2017.\n\n\nAbout Jason\n\n\n\n\nWeb: \nschroederapps.com\n\n\nGitHub: \ngithub.com/schroederapps\n\n\nTwitter: \ntwitter.com/schroederapps\n\n\n\n\nCorona Plugins\n\n\n\n\nProgress Ring\n\n\nStripe\n\n\nTwitter\n\n\n\n\nOpen-Source Corona Libraries\n\n\n\n\ncorona-settings\n: a simple solution for securely saving persistent user settings in Corona projects\n\n\ncorona-timer2\n: extend the capabilities of Corona's built-in \ntimer\n library with one line of code", 
+            "text": "SchroederDocs\n\n\nJason Schroeder\n is a software developer who specializes in creating mobile apps using the \nCorona\n cross-platform 2D development framework. This site contains documentation on his Corona plugins and open-source code.\n\n\nCorona Plugins\n\n\n\n\nProgress Ring\n\n\nStripe\n\n\nTwitter\n\n\n\n\nOpen-Source Corona Libraries\n\n\n\n\ncorona-settings\n: a simple solution for securely saving persistent user settings in Corona projects\n\n\ncorona-timer2\n: extend the capabilities of Corona's built-in \ntimer\n library with one line of code\n\n\n\n\nLinks\n\n\n\n\nschroederapps.com\n\n\ngithub.com/schroederapps\n\n\ntwitter.com/schroederapps", 
             "title": "Home"
         }, 
         {
             "location": "/#schroederdocs", 
-            "text": "Documenting  Jason Schroeder 's shared code since 2017.", 
+            "text": "Jason Schroeder  is a software developer who specializes in creating mobile apps using the  Corona  cross-platform 2D development framework. This site contains documentation on his Corona plugins and open-source code.", 
             "title": "SchroederDocs"
-        }, 
-        {
-            "location": "/#about-jason", 
-            "text": "Web:  schroederapps.com  GitHub:  github.com/schroederapps  Twitter:  twitter.com/schroederapps", 
-            "title": "About Jason"
         }, 
         {
             "location": "/#corona-plugins", 
@@ -26,34 +21,9 @@
             "title": "Open-Source Corona Libraries"
         }, 
         {
-            "location": "/twitter/", 
-            "text": "Twitter Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
-            "title": "Twitter"
-        }, 
-        {
-            "location": "/twitter/#twitter-plugin-for-corona", 
-            "text": "", 
-            "title": "Twitter Plugin for Corona"
-        }, 
-        {
-            "location": "/twitter/#documentation-coming-soon", 
-            "text": "For now, please visit the older docs at  schroederapps.com", 
-            "title": "Documentation coming soon!"
-        }, 
-        {
-            "location": "/stripe/", 
-            "text": "Stripe Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
-            "title": "Stripe"
-        }, 
-        {
-            "location": "/stripe/#stripe-plugin-for-corona", 
-            "text": "", 
-            "title": "Stripe Plugin for Corona"
-        }, 
-        {
-            "location": "/stripe/#documentation-coming-soon", 
-            "text": "For now, please visit the older docs at  schroederapps.com", 
-            "title": "Documentation coming soon!"
+            "location": "/#links", 
+            "text": "schroederapps.com  github.com/schroederapps  twitter.com/schroederapps", 
+            "title": "Links"
         }, 
         {
             "location": "/progress_ring/", 
@@ -79,6 +49,36 @@
             "location": "/progress_ring/#creating-a-progress-ring", 
             "text": "To create a  progressRing  object, first  require  the plugin into your app/scene:  local progressRing = require('plugin.progressRing')  Next, call  progressRing.new() , which will return a progress ring object with the default parameters:  local myRing = progressRing.new()  NOTE:  Progress rings are, at their core, just Corona  GroupObjects . They can be moved, repositioned, inserted into other group objects, and destroyed just like any other group object. If there's something you can do to a Corona group object, then you can do that to your progress ring.", 
             "title": "Creating a Progress Ring"
+        }, 
+        {
+            "location": "/stripe/", 
+            "text": "Stripe Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
+            "title": "Stripe"
+        }, 
+        {
+            "location": "/stripe/#stripe-plugin-for-corona", 
+            "text": "", 
+            "title": "Stripe Plugin for Corona"
+        }, 
+        {
+            "location": "/stripe/#documentation-coming-soon", 
+            "text": "For now, please visit the older docs at  schroederapps.com", 
+            "title": "Documentation coming soon!"
+        }, 
+        {
+            "location": "/twitter/", 
+            "text": "Twitter Plugin for Corona\n\n\n\n\nDocumentation coming soon!\n\n\nFor now, please visit the older docs at \nschroederapps.com", 
+            "title": "Twitter"
+        }, 
+        {
+            "location": "/twitter/#twitter-plugin-for-corona", 
+            "text": "", 
+            "title": "Twitter Plugin for Corona"
+        }, 
+        {
+            "location": "/twitter/#documentation-coming-soon", 
+            "text": "For now, please visit the older docs at  schroederapps.com", 
+            "title": "Documentation coming soon!"
         }
     ]
 }
