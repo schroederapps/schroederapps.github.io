@@ -95,6 +95,15 @@
             <li><a href="#about-the-plugin">About the Plugin</a></li>
             <li><a href="#adding-the-plugin-to-your-app">Adding the Plugin to your App</a></li>
             <li><a href="#creating-a-progress-ring">Creating a Progress Ring</a></li>
+            <li><a href="#customizing-your-progress-ring">Customizing Your Progress Ring</a></li>
+            <li><a href="#object-methods-properties">Object Methods &amp; Properties</a></li>
+            <li><a href="#ringgotoposition-time-oncomplete">ring:goTo(position, [time], [onComplete])</a></li>
+            <li><a href="#ringpause">ring:pause()</a></li>
+            <li><a href="#ringresume">ring:resume()</a></li>
+            <li><a href="#ringreset">ring:reset()</a></li>
+            <li><a href="#ringposition">ring.position</a></li>
+            <li><a href="#adding-event-listeners">Adding Event Listeners</a></li>
+            <li><a href="#gotchas">Gotchas</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
@@ -126,7 +135,276 @@ settings.plugins = {
 <pre><code class="lua">local myRing = progressRing.new()
 </code></pre>
 
-<p><em><strong>NOTE:</strong> Progress rings are, at their core, just Corona <a href="https://docs.coronalabs.com/api/type/GroupObject/index.html">GroupObjects</a>. They can be moved, repositioned, inserted into other group objects, and destroyed just like any other group object. If there's something you can do to a Corona group object, then you can do that to your progress ring.</em></p></div>
+<p><em><strong>NOTE:</strong> Progress rings are, at their core, just Corona <a href="https://docs.coronalabs.com/api/type/GroupObject/index.html">GroupObjects</a>. They can be rotated, repositioned, inserted into other group objects, and destroyed just like any other group object. Basically, if you can do it to a Corona group object, then you can do it to your progress ring.</em></p>
+<p>&nbsp;</p>
+<h2 id="customizing-your-progress-ring">Customizing Your Progress Ring</h2>
+<p>Calling <code>progressRing.new()</code> is the fastest way to add a progress ring to your app, but the returned object will always look the same, and may not suit your needs. But it's very easy to customize your ring by passing a table of parameters as an argument to <code>progressRing.new()</code>. This table can include any of the following key/value pairs. None are required:</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>type</th>
+<th>value notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>parent</code></td>
+<td>Corona display group</td>
+<td>a variable name referencing a Corona display group to insert the ring into. Defaults to <a href = 'https://docs.coronalabs.com/api/library/display/currentStage.html' target = "_blank"><code>display.currentStage</code></a>.</td>
+</tr>
+<tr>
+<td><code>x</code></td>
+<td>number</td>
+<td>the x coordinate where the ring should be placed. Defaults to <code>nil</code> (effectively <code>0</code>).</td>
+</tr>
+<tr>
+<td><code>y</code></td>
+<td>number</td>
+<td>the y coordinate where the ring should be placed. Defaults to <code>nil</code> (effectively <code>0</code>).</td>
+</tr>
+<tr>
+<td><code>radius</code></td>
+<td>number</td>
+<td>the radius of your ring in Corona content units. Defaults to <code>100</code>.</td>
+</tr>
+<tr>
+<td><code>diameter</code></td>
+<td>number</td>
+<td>the diameter of your ring in Corona content units. If both <code>radius</code> and <code>diameter</code> are specified, <code>diameter</code> is given priority. Defaults to <code>200</code></td>
+</tr>
+<tr>
+<td><code>ringDepth</code></td>
+<td>number</td>
+<td>a number between 0 and 1 representing the depth of your ring. A ringDepth of <code>1</code> will result in a fully-round ring (“all donut, no hole”), while a ringDepth of <code>0</code> would result in a practically invisible ring (“all hole, no donut”). Defaults to <code>.33</code>.</td>
+</tr>
+<tr>
+<td><code>ringColor</code></td>
+<td>table</td>
+<td>a table containing 4 numbers between 0 and 1, representing the RGBA values of your ring’s bar color. Defaults to <code>{1, .5, 0, 1}</code>.</td>
+</tr>
+<tr>
+<td><code>bgColor</code></td>
+<td>table</td>
+<td>a table containing 4 numbers between 0 and 1, representing the RBGA values of your ring’s background color. Defaults to <code>{.7, .7, .7, 1}</code>.</td>
+</tr>
+<tr>
+<td><code>strokeColor</code></td>
+<td>table</td>
+<td>a table containing 4 numbers between 0 and 1, representing the RBGA values of your ring’s stroke color. If not specified, this value will default to whatever your ring's <code>bgColor</code> is.</td>
+</tr>
+<tr>
+<td><code>strokeWidth</code></td>
+<td>number</td>
+<td>a number representing the width of your ring’s stroke in Corona content units. Defaults to <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>counterclockwise</code></td>
+<td>boolean</td>
+<td>whether or not the ring should advance in a counter-clockwise manner. Defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>hideBG</code></td>
+<td>boolean</td>
+<td>whether or not the background should be invisible. Defaults to <code>false</code>.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>number</td>
+<td>the amount of time in milliseconds your ring will take to make a full 360-degree rotation. Defaults to <code>10000</code> (10 seconds).</td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>number</td>
+<td>a number between 0 and 1 representing the starting position of your progress bar. <code>0</code> would result in no visible progress bar (i.e. 0 degrees), whereas <code>1</code> would result in a full progress bar (i.e. 360 degrees). Defaults to <code>0</code>.</td>
+</tr>
+<tr>
+<td><code>bottomImage</code></td>
+<td>string</td>
+<td>path to an image file (i.e. <code>images/bottom.png</code>) that will appear “underneath” or “behind” your progress ring. Automatically supports dynamic image scaling (@2x, @3x, etc.). Defaults to <code>nil</code>.</td>
+</tr>
+<tr>
+<td><code>topImage</code></td>
+<td>string</td>
+<td>path to an image file (i.e. <code>images/top.png</code>) that will appear “on top of” or “in front of” your progress ring. Automatically supports dynamic image scaling (@2x, @3x, etc.). Defaults to <code>nil</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>&nbsp;
+<hr></p>
+<h2 id="object-methods-properties"><strong>Object Methods &amp; Properties</strong></h2>
+<p>Calling <code>progressRing.new()</code> will create a progress ring object, but it's just going to sit there statically until you call one or more of the following methods on your created objects. Note that methods expect a reference to the ring object, so be sure to call them using a <code>:</code> colon operator, not a <code>.</code> dot, as indicated below.</p>
+<p>&nbsp;</p>
+<h2 id="ringgotoposition-time-oncomplete">ring:goTo(position, <em>[time], [onComplete])</em></h2>
+<blockquote>
+<p>Advances or retreats the position of the progress ring to the position specified. Will cancel and override any currently-running <code>goTo</code> call. Upon completion, a <code>progressRingEvent</code> is fired with a phase of <code>completed</code>.</p>
+<p>Accepts the following arguments:</p>
+</blockquote>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>type</th>
+<th>value notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>position</code></td>
+<td>number</td>
+<td>a number between 0 and 1 representing the position of the bar should advance or retreat to. <code>0</code> would result in no visible progress bar (i.e. 0 degrees), whereas <code>1</code> would result in a full progress bar (i.e. 360 degrees). <strong>(required)</strong></td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>number</td>
+<td>the number of milliseconds for the ring to advance or retreat to the specified position. If <code>nil</code>, the time is determined by the <code>time</code> value specified for a full rotation when the ring was created. For example, if a ring has a <code>time</code> value of <code>10000</code> for a full rotation, and you are moving the ring from position <code>0</code> to position <code>.5</code>, then it will take 5 seconds to advance by default. <em>(optional)</em></td>
+</tr>
+<tr>
+<td><code>onComplete</code></td>
+<td>function</td>
+<td>a function to call when the ring completes its advancement or retreat. A reference to the ring object will be passed as a single argument to the function. <em>(optional)</em></td>
+</tr>
+</tbody>
+</table>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+local myRing = progressRing.new()
+
+local function onMovementComplete(target)
+  print('progress ring ' .. tostring(target) .. ' completed its rotation!')
+end
+
+myRing:goTo(.9, 3000, onMovementComplete)
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringpause">ring:pause()</h2>
+<blockquote>
+<p>Pauses a progress ring in motion. Accepts no arguments.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+local myRing = progressRing.new()
+
+local function pauseThatRing()
+  myRing:pause()
+end
+
+myRing:goTo(1) --start moving the ring (takes 10 seconds)
+timer.performWithDelay(2000, pauseThatRing) --pause the ring after 2 seconds
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringresume">ring:resume()</h2>
+<blockquote>
+<p>Resumes motion on a paused progress ring. Accepts no arguments.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+local myRing = progressRing.new()
+
+local function pauseThatRing()
+  myRing:pause()
+end
+
+local function resumeThatRing()
+  myRing:resume()
+end
+
+myRing:goTo(1) -- start moving the ring (takes 10 seconds)
+timer.performWithDelay(2000, pauseThatRing) -- pause the ring after 2 seconds
+timer.performWithDelay(4000, resumeThatRing) -- resume the motion 2 seconds later
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringreset">ring:reset()</h2>
+<blockquote>
+<p>Returns ring to the starting position defined when the object was created. Cancels any currently-running <code>goTo</code> call. Accepts no arguments.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+local myRing = progressRing.new()
+
+local function resetMe()
+  myRing:reset()
+end
+
+myRing:goTo(1, 2000, resetMe) -- do a full 2-second rotation, then reset
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringposition">ring.position</h2>
+<blockquote>
+<p>A number between 0 and 1 indicating where the progress ring currently stands in its progression. Setting this value will cause the ring to instantly jump to that position.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+local myRing = progressRing.new()
+
+-- check ring's position:
+print(myRing.position) -- &gt;&gt; 0
+
+-- set ring's position
+myRing.position = .75 -- ring will visually jump to the .75 position
+</code></pre>
+
+<p>&nbsp;
+<hr></p>
+<h2 id="adding-event-listeners">Adding Event Listeners</h2>
+<p>Progress Ring objects dispatch <code>progressRingEvents</code> at key moments that can be listened for and acted on. The event table that is dispatched contains the following key/value pairs:</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>type</th>
+<th>value notes</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>name</code></td>
+<td>string</td>
+<td>will always be <code>progressRingEvent</code></td>
+</tr>
+<tr>
+<td><code>target</code></td>
+<td>reference</td>
+<td>a reference to the progress ring object that dispatched the event</td>
+</tr>
+<tr>
+<td><code>phase</code></td>
+<td>string</td>
+<td>will be one of the following: <code>completed</code>, <code>paused</code>, <code>resumed</code>, or <code>reset</code></td>
+</tr>
+<tr>
+<td><code>position</code></td>
+<td>number</td>
+<td>a number between 0 and 1 indicating the ring's position when the event was dispatched.</td>
+</tr>
+<tr>
+<td><code>time</code></td>
+<td>number</td>
+<td>the time value that was passed to a completed <code>goTo</code> call. Will always be <code>nil</code> when <code>event.phase ~= 'completed'</code>.</td>
+</tr>
+</tbody>
+</table>
+<p>To listen for these events, add an event listener to your ring object as such:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+
+local function ringEventListener(event)
+  print('Ring event fired! Target: ' .. event.target .. '; Phase: ' .. event.phase)
+end
+
+local myRing = progressRing.new()
+myRing:addEventListener('progressRingEvent', ringEventListener)
+myRing:goTo(1)
+</code></pre>
+
+<p>&nbsp;
+<hr></p>
+<h2 id="gotchas">Gotchas</h2>
+<p>Progress ring objects utilize multiple masks to create the "donut hole" effect, and have perfectly round edges. Corona has a <a href="https://docs.coronalabs.com/api/type/Mask/index.html#gotchas" target="_blank">nested masking limit of three</a>. Because of this, progress ring objects with a <code>ringDepth</code> less than <code>1</code> cannot be inserted into masked groups, including <code>display.newContainer</code>, <code>widget.newScrollView</code> or <code>widget.newTableView</code> objects.</p>
+<p>Rings with a <code>ringDepth</code> of <code>1</code> only use two nested masks because they don't have a 'hole' and can be inserted into masked groups, but only "one deep."</p></div>
         </div>
 
         <footer class="col-md-12">
