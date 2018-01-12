@@ -101,7 +101,11 @@
             <li><a href="#ringpause">ring:pause()</a></li>
             <li><a href="#ringresume">ring:resume()</a></li>
             <li><a href="#ringreset">ring:reset()</a></li>
+            <li><a href="#ringsetbgcolorr-g-b-a">ring:setBgColor([r], [g], [b], [a])</a></li>
+            <li><a href="#ringsetringcolorr-g-b-a">ring:setRingColor([r], [g], [b], [a])</a></li>
+            <li><a href="#ringsetstrokecolorr-g-b-a">ring:setStrokeColor([r], [g], [b], [a])</a></li>
             <li><a href="#ringposition">ring.position</a></li>
+            <li><a href="#ringstrokewidth">ring.strokeWidth</a></li>
             <li><a href="#adding-event-listeners">Adding Event Listeners</a></li>
             <li><a href="#gotchas">Gotchas</a></li>
     </ul>
@@ -333,6 +337,60 @@ myRing:goTo(1, 2000, resetMe) -- do a full 2-second rotation, then reset
 </code></pre>
 
 <p>&nbsp;</p>
+<h2 id="ringsetbgcolorr-g-b-a">ring:setBgColor<em>([r], [g], [b], [a])</em></h2>
+<blockquote>
+<p>Changes the background color of the ring object after it's already been created. accepts up to 4 numeric arguments indicating the RGBA values of the new background color.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+-- create a ring object with a red background
+local myRing = progressRing.new({
+  bgColor = {1, 0, 0},
+})
+
+-- change the background color to blue after 2 seconds:
+timer.performWithDelay(2000, function()
+  myRing:setBgColor(0, 0, 1)
+end)
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringsetringcolorr-g-b-a">ring:setRingColor<em>([r], [g], [b], [a])</em></h2>
+<blockquote>
+<p>Changes the ring color of the ring object after it's already been created. accepts up to 4 numeric arguments indicating the RGBA values of the new ring color.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+-- create a ring object with a red ring
+local myRing = progressRing.new({
+  ringColor = {1, 0, 0},
+})
+
+-- change the ring color to blue after 2 seconds:
+timer.performWithDelay(2000, function()
+  myRing:setRingColor(0, 0, 1)
+end)
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringsetstrokecolorr-g-b-a">ring:setStrokeColor<em>([r], [g], [b], [a])</em></h2>
+<blockquote>
+<p>Changes the stroke color of the ring object after it's already been created. accepts up to 4 numeric arguments indicating the RGBA values of the new stroke color.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+-- create a ring object with a red stroke
+local myRing = progressRing.new({
+  strokeColor = {1, 0, 0},
+})
+
+-- change the stroke color to blue after 2 seconds:
+timer.performWithDelay(2000, function()
+  myRing:setStrokeColor(0, 0, 1)
+end)
+</code></pre>
+
+<p>&nbsp;</p>
 <h2 id="ringposition">ring.position</h2>
 <blockquote>
 <p>A number between 0 and 1 indicating where the progress ring currently stands in its progression. Setting this value will cause the ring to instantly jump to that position.</p>
@@ -346,6 +404,25 @@ print(myRing.position) -- &gt;&gt; 0
 
 -- set ring's position
 myRing.position = .75 -- ring will visually jump to the .75 position
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="ringstrokewidth">ring.strokeWidth</h2>
+<blockquote>
+<p>A number representing the strokeWidth of the ring object. As with other Corona display objects, adjusting this value will instantly change the object's visuals.</p>
+</blockquote>
+<p>Example:</p>
+<pre><code class="lua">local progressRing = require('plugin.progressRing')
+
+-- create a ring object with a strokeWidth of zero
+local myRing = progressRing.new({
+  strokeWidth = 0
+})
+
+-- change the ring's strokeWidth to 10 after 2 seconds:
+timer.performWithDelay(2000, function()
+  myRing.strokeWidth = 20
+end)
 </code></pre>
 
 <p>&nbsp;
