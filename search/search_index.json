@@ -2,7 +2,7 @@
     "docs": [
         {
             "location": "/", 
-            "text": "SchroederDocs\n\n\nJason Schroeder\n is a software developer who specializes in creating mobile apps using the \nCorona\n cross-platform 2D development framework. This site contains documentation on his Corona plugins and open-source code.\n\n\nCorona Plugins\n\n\n\n\nProgress Ring\n\n\nStripe\n\n\nTwitter\n\n\n\n\nOpen-Source Corona Libraries\n\n\n\n\ncorona-settings\n: a simple solution for securely saving persistent user settings in Corona projects\n\n\ncorona-timer2\n: extend the capabilities of Corona's built-in \ntimer\n library with one line of code\n\n\n\n\nLinks\n\n\n\n\nschroederapps.com\n\n\ngithub.com/schroederapps\n\n\ntwitter.com/schroederapps", 
+            "text": "SchroederDocs\n\n\nJason Schroeder\n is a software developer who specializes in creating mobile apps using the \nCorona\n cross-platform 2D development framework. This site contains documentation on his Corona plugins and open-source code.\n\n\nCorona Plugins\n\n\n\n\nScreen Melt\n\n\nProgress Ring\n\n\nStripe\n\n\nTwitter\n\n\n\n\nOpen-Source Corona Libraries\n\n\n\n\ncorona-settings\n: a simple solution for securely saving persistent user settings in Corona projects\n\n\ncorona-timer2\n: extend the capabilities of Corona's built-in \ntimer\n library with one line of code\n\n\n\n\nLinks\n\n\n\n\nschroederapps.com\n\n\ngithub.com/schroederapps\n\n\ntwitter.com/schroederapps", 
             "title": "Home"
         }, 
         {
@@ -12,7 +12,7 @@
         }, 
         {
             "location": "/#corona-plugins", 
-            "text": "Progress Ring  Stripe  Twitter", 
+            "text": "Screen Melt  Progress Ring  Stripe  Twitter", 
             "title": "Corona Plugins"
         }, 
         {
@@ -24,6 +24,41 @@
             "location": "/#links", 
             "text": "schroederapps.com  github.com/schroederapps  twitter.com/schroederapps", 
             "title": "Links"
+        }, 
+        {
+            "location": "/screen_melt/", 
+            "text": "Screen Melt Plugin for Corona\n\n\n\n\nAbout the Plugin\n\n\nThe Screen Melt Plugin for Corona extends Corona's built-in Composer library with a scene transition effect inspired by id Software's classic DOOM. If you've ever played the original DOOM, you'll instantly recognize the effect:\n\n\n\n\n\n\n\nAdding the Plugin to your App\n\n\n\n\nActivate the plugin at the Corona Marketplace\n\n\nAdd an entry into the \nplugins\n table of your project's \nbuild.settings\n file. Below is an example of a minimal build.settings file with the required entry for the progressRing plugin:\n\n\n\n\nsettings = {}\n\nsettings.plugins = {\n  ['plugin.screenMelt'] = {publisherId = 'com.schroederapps'},\n}\n\n\n\n\n\n\nRequiring the plugin\n\n\nTo enable the \"screenMelt\" transition effect, simply \nrequire\n the plugin into your app, preferably early on in your \nmain.lua\n:\n\n\nrequire('plugin.screenMelt')\n\n\n\n\nNow, simply pass in the string \nscreenMelt\n where you'd normally indicate the transition effect you want to use when calling \ncomposer.gotoScene()\n. There are 2 different ways you can do this:\n\n\ncomposer.gotoScene('someScene', 'screenMelt')\n\n\n\n\ncomposer.gotoScene('someScene', {effect = 'screenMelt'})\n\n\n\n\n\n\nCustomizations\n\n\nBy default, using the screenMelt transition effect will result in a 1 second (1000ms) melt effect, with the screen divided up into 320 vertical \"slices\" of equal width. This is in keeping with the original DOOM, which as far as I could tell split up a VGA screen (640 pixels wide) into 2-pixel slices.\n\n\nIf desired, you can specify the speed of the transition by including a \ntime\n parameter in the \noptions\n table of your \ncomposer.gotoScene()\n call:\n\n\ncomposer.gotoScene('someScene', {effect = 'screenMelt', time = 2000})\n\n\n\n\nLikewise, you can specify the width of the vertical \"slices\" in Corona content units by including a \nsliceWidth\n parameter in the \noptions\n table of your \ncomposer.gotoScene()\n call:\n\n\ncomposer.gotoScene('someScene', {effect = 'screenMelt', sliceWidth = 66.6})\n\n\n\n\nGotchas\n\n\n\n\nOnly visual objects on the OpenGL canvas will be \"melted\" in this effect. Native display objects like text fields or web views will remain in place \"on top of\" the melt effect. Please take this into consideration when using this effect on scenes that utilize native objects.\n\n\nThe plugin utilizes a number of screen capture APIs in rapid succession to achieve the vertical slicing of the image. On modern mobile devices, this should be nearly instantaneous, but on older, less-capable devices, there may be noticeable lag. You may be able to improve performance by setting a larger \nsliceWidth\n, thereby reducing the number of screen capture operations being performed.\n\n\nShould go without saying, but I'm in no way affiliated with id Software or DOOM. I'm just a fan. :)", 
+            "title": "Screen Melt"
+        }, 
+        {
+            "location": "/screen_melt/#screen-melt-plugin-for-corona", 
+            "text": "", 
+            "title": "Screen Melt Plugin for Corona"
+        }, 
+        {
+            "location": "/screen_melt/#about-the-plugin", 
+            "text": "The Screen Melt Plugin for Corona extends Corona's built-in Composer library with a scene transition effect inspired by id Software's classic DOOM. If you've ever played the original DOOM, you'll instantly recognize the effect:", 
+            "title": "About the Plugin"
+        }, 
+        {
+            "location": "/screen_melt/#adding-the-plugin-to-your-app", 
+            "text": "Activate the plugin at the Corona Marketplace  Add an entry into the  plugins  table of your project's  build.settings  file. Below is an example of a minimal build.settings file with the required entry for the progressRing plugin:   settings = {}\n\nsettings.plugins = {\n  ['plugin.screenMelt'] = {publisherId = 'com.schroederapps'},\n}", 
+            "title": "Adding the Plugin to your App"
+        }, 
+        {
+            "location": "/screen_melt/#requiring-the-plugin", 
+            "text": "To enable the \"screenMelt\" transition effect, simply  require  the plugin into your app, preferably early on in your  main.lua :  require('plugin.screenMelt')  Now, simply pass in the string  screenMelt  where you'd normally indicate the transition effect you want to use when calling  composer.gotoScene() . There are 2 different ways you can do this:  composer.gotoScene('someScene', 'screenMelt')  composer.gotoScene('someScene', {effect = 'screenMelt'})", 
+            "title": "Requiring the plugin"
+        }, 
+        {
+            "location": "/screen_melt/#customizations", 
+            "text": "By default, using the screenMelt transition effect will result in a 1 second (1000ms) melt effect, with the screen divided up into 320 vertical \"slices\" of equal width. This is in keeping with the original DOOM, which as far as I could tell split up a VGA screen (640 pixels wide) into 2-pixel slices.  If desired, you can specify the speed of the transition by including a  time  parameter in the  options  table of your  composer.gotoScene()  call:  composer.gotoScene('someScene', {effect = 'screenMelt', time = 2000})  Likewise, you can specify the width of the vertical \"slices\" in Corona content units by including a  sliceWidth  parameter in the  options  table of your  composer.gotoScene()  call:  composer.gotoScene('someScene', {effect = 'screenMelt', sliceWidth = 66.6})", 
+            "title": "Customizations"
+        }, 
+        {
+            "location": "/screen_melt/#gotchas", 
+            "text": "Only visual objects on the OpenGL canvas will be \"melted\" in this effect. Native display objects like text fields or web views will remain in place \"on top of\" the melt effect. Please take this into consideration when using this effect on scenes that utilize native objects.  The plugin utilizes a number of screen capture APIs in rapid succession to achieve the vertical slicing of the image. On modern mobile devices, this should be nearly instantaneous, but on older, less-capable devices, there may be noticeable lag. You may be able to improve performance by setting a larger  sliceWidth , thereby reducing the number of screen capture operations being performed.  Should go without saying, but I'm in no way affiliated with id Software or DOOM. I'm just a fan. :)", 
+            "title": "Gotchas"
         }, 
         {
             "location": "/progress_ring/", 

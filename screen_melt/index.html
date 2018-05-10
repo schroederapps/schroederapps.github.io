@@ -8,7 +8,7 @@
         
         
         <link rel="shortcut icon" href="../img/favicon.ico">
-        <title>Twitter - SchroederDocs</title>
+        <title>Screen Melt - SchroederDocs</title>
         <link href="../css/bootstrap-custom.min.css" rel="stylesheet">
         <link href="../css/font-awesome-4.5.0.css" rel="stylesheet">
         <link href="../css/base.css" rel="stylesheet">
@@ -52,8 +52,8 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown">Corona Plugins <b class="caret"></b></a>
                         <ul class="dropdown-menu">
                             
-<li >
-    <a href="../screen_melt/">Screen Melt</a>
+<li class="active">
+    <a href="./">Screen Melt</a>
 </li>
                             
 <li >
@@ -64,8 +64,8 @@
     <a href="../stripe/">Stripe</a>
 </li>
                             
-<li class="active">
-    <a href="./">Twitter</a>
+<li >
+    <a href="../twitter/">Twitter</a>
 </li>
                         </ul>
                     </li>
@@ -78,12 +78,12 @@
                     </a>
                 </li>
                     <li >
-                        <a rel="next" href="../stripe/">
+                        <a rel="next" href="..">
                             <i class="fa fa-arrow-left"></i> Previous
                         </a>
                     </li>
-                    <li class="disabled">
-                        <a rel="prev" >
+                    <li >
+                        <a rel="prev" href="../progress_ring/">
                             Next <i class="fa fa-arrow-right"></i>
                         </a>
                     </li>
@@ -95,16 +95,65 @@
         <div class="container">
                 <div class="col-md-3"><div class="bs-sidebar hidden-print affix well" role="complementary">
     <ul class="nav bs-sidenav">
-        <li class="main active"><a href="#twitter-plugin-for-corona">Twitter Plugin for Corona</a></li>
-            <li><a href="#documentation-coming-soon">Documentation coming soon!</a></li>
+        <li class="main active"><a href="#screen-melt-plugin-for-corona">Screen Melt Plugin for Corona</a></li>
+            <li><a href="#about-the-plugin">About the Plugin</a></li>
+            <li><a href="#adding-the-plugin-to-your-app">Adding the Plugin to your App</a></li>
+            <li><a href="#requiring-the-plugin">Requiring the plugin</a></li>
+            <li><a href="#customizations">Customizations</a></li>
+            <li><a href="#gotchas">Gotchas</a></li>
     </ul>
 </div></div>
                 <div class="col-md-9" role="main">
 
-<h1 id="twitter-plugin-for-corona">Twitter Plugin for Corona</h1>
-<p><a href='https://marketplace.coronalabs.com/plugin/twitter' target='_blank' alt = 'Activate the plugin at the Corona Marketplace'><img src = '/img/get_plugin.png' border=0></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/twitter_sample.zip' alt = 'Download sample project'><img src = '/img/download_sample_project.png'></a></p>
-<h2 id="documentation-coming-soon">Documentation coming soon!</h2>
-<p>For now, please visit the older docs at <a href="http://www.jasonschroeder.com/2015/07/15/twitter-plugin-for-corona-sdk/">schroederapps.com</a></p></div>
+<h1 id="screen-melt-plugin-for-corona">Screen Melt Plugin for Corona</h1>
+<p><a href='https://marketplace.coronalabs.com/plugin/screen-melt' target='_blank' alt = 'Activate the plugin at the Corona Marketplace'><img src = '/img/get_plugin.png' border=0></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<a href='/screen_melt_sample.zip' alt = 'Download sample project'><img src = '/img/download_sample_project.png'></a></p>
+<h2 id="about-the-plugin">About the Plugin</h2>
+<p>The Screen Melt Plugin for Corona extends Corona's built-in Composer library with a scene transition effect inspired by id Software's classic DOOM. If you've ever played the original DOOM, you'll instantly recognize the effect:</p>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/wA71cps0aik" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+
+<p>&nbsp;</p>
+<h2 id="adding-the-plugin-to-your-app">Adding the Plugin to your App</h2>
+<ol>
+<li><a href='https://marketplace.coronalabs.com/plugin/screen-melt' target='_blank'>Activate the plugin at the Corona Marketplace</a></li>
+<li>Add an entry into the <strong>plugins</strong> table of your project's <strong>build.settings</strong> file. Below is an example of a minimal build.settings file with the required entry for the progressRing plugin:</li>
+</ol>
+<pre><code class="lua">settings = {}
+
+settings.plugins = {
+  ['plugin.screenMelt'] = {publisherId = 'com.schroederapps'},
+}
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="requiring-the-plugin">Requiring the plugin</h2>
+<p>To enable the "screenMelt" transition effect, simply <code>require</code> the plugin into your app, preferably early on in your <code>main.lua</code>:</p>
+<pre><code class="lua">require('plugin.screenMelt')
+</code></pre>
+
+<p>Now, simply pass in the string <code>screenMelt</code> where you'd normally indicate the transition effect you want to use when calling <code>composer.gotoScene()</code>. There are 2 different ways you can do this:</p>
+<pre><code class="lua">composer.gotoScene('someScene', 'screenMelt')
+</code></pre>
+
+<pre><code class="lua">composer.gotoScene('someScene', {effect = 'screenMelt'})
+</code></pre>
+
+<p>&nbsp;</p>
+<h2 id="customizations">Customizations</h2>
+<p>By default, using the screenMelt transition effect will result in a 1 second (1000ms) melt effect, with the screen divided up into 320 vertical "slices" of equal width. This is in keeping with the original DOOM, which as far as I could tell split up a VGA screen (640 pixels wide) into 2-pixel slices.</p>
+<p>If desired, you can specify the speed of the transition by including a <code>time</code> parameter in the <code>options</code> table of your <code>composer.gotoScene()</code> call:</p>
+<pre><code class="lua">composer.gotoScene('someScene', {effect = 'screenMelt', time = 2000})
+</code></pre>
+
+<p>Likewise, you can specify the width of the vertical "slices" in Corona content units by including a <code>sliceWidth</code> parameter in the <code>options</code> table of your <code>composer.gotoScene()</code> call:</p>
+<pre><code class="lua">composer.gotoScene('someScene', {effect = 'screenMelt', sliceWidth = 66.6})
+</code></pre>
+
+<h2 id="gotchas">Gotchas</h2>
+<ul>
+<li>Only visual objects on the OpenGL canvas will be "melted" in this effect. Native display objects like text fields or web views will remain in place "on top of" the melt effect. Please take this into consideration when using this effect on scenes that utilize native objects.</li>
+<li>The plugin utilizes a number of screen capture APIs in rapid succession to achieve the vertical slicing of the image. On modern mobile devices, this should be nearly instantaneous, but on older, less-capable devices, there may be noticeable lag. You may be able to improve performance by setting a larger <code>sliceWidth</code>, thereby reducing the number of screen capture operations being performed.</li>
+<li>Should go without saying, but I'm in no way affiliated with id Software or DOOM. I'm just a fan. :)</li>
+</ul></div>
         </div>
 
         <footer class="col-md-12">

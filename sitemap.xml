@@ -4,7 +4,7 @@
     
     <url>
      <loc>/</loc>
-     <lastmod>2018-01-12</lastmod>
+     <lastmod>2018-05-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
     
@@ -12,20 +12,26 @@
     
         
     <url>
+     <loc>/screen_melt/</loc>
+     <lastmod>2018-05-09</lastmod>
+     <changefreq>daily</changefreq>
+    </url>
+        
+    <url>
      <loc>/progress_ring/</loc>
-     <lastmod>2018-01-12</lastmod>
+     <lastmod>2018-05-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/stripe/</loc>
-     <lastmod>2018-01-12</lastmod>
+     <lastmod>2018-05-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
     <url>
      <loc>/twitter/</loc>
-     <lastmod>2018-01-12</lastmod>
+     <lastmod>2018-05-09</lastmod>
      <changefreq>daily</changefreq>
     </url>
         
